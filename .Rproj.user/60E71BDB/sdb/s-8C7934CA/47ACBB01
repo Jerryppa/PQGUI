@@ -1,0 +1,16 @@
+{
+    "contents" : "\n# This is the user-interface definition of a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\n\nshinyUI(fluidPage(\n  titlePanel(\"PERCH Quantitative Model\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      helpText(\"Create you own pie\"),\n      \n      selectInput(\"start\", \n                  label = \"What do you want to do\",\n                  choices = c(\"See what does PERCH look like\", \"Run Mighty PERCH Model\"),\n                  selected = \"See what does PERCH look like\"),\n      \n      selectInput(\"EP\", \n                  label = \"Choose Etiology Prior\",\n                  choices = c(\"Weak Uniform Prior\", \"Weak informed Prior\"),\n                  selected = \"Weak Uniform Prior\"),\n      \n      selectInput(\"TBP\", \n                  label = \"Choose Sensitivity Prior for Bronze Standard\",\n                  choices = c(\"50%-100%\", \"0%-100%\"),\n                  selected = \"50%-100%\"),\n\n      selectInput(\"TSP\", \n                  label = \"Choose Sensitivity Prior for Silver Standard\",\n                  choices = c(\"10%-20%\", \"0%-20%\"),\n                  selected = \"10%-20%\"),\n      \n      submitButton(\"Submit\")\n      ),\n    \n    mainPanel(\n      textOutput(\"text1\")\n    )\n  )\n))",
+    "created" : 1428518708172.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1723051154",
+    "id" : "47ACBB01",
+    "lastKnownWriteTime" : 1428526825,
+    "path" : "C:/Users/WFu/Google Drive/PERCH/2_PQ_MODEL/PQM_Project/PQGUI/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
