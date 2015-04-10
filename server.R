@@ -25,6 +25,11 @@ shinyServer(
     
     source("SIM_DATA.R")
     source("SIM_FUN.R")
+    
+    #output$slider2 <- reactiveUI(function() {
+    #  sliderInput("slider2", "Bacteria: ", min = 0,  max = 100 - input$slider1, value = 0)  
+    #})
+    
     dataInput <- reactive({
       set_parameter <- list(pathogen_BrS = c("A","B","C","D","E","F","G","H","I","J"),
                                  cause_list=c("A","B","C","D","E","F","G","H","I","J"),
@@ -57,7 +62,7 @@ shinyServer(
     #simdata<- SIM_DATA(set_parameter_S0C0D0)
     
     output$text1 <- renderText({ 
-      if (input$start =="See what does PERCH look like") {
+      if (input$start =="Choose Difficulty") {
         "Do you know PERCH is a fish?"
       }
       else if (input$start =="Run Mighty PERCH Model") {  

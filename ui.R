@@ -16,24 +16,41 @@ shinyUI(fluidPage(
       
       selectInput("start", 
                   label = "What do you want to do",
-                  choices = c("See what does PERCH look like", "Run Mighty PERCH Model"),
+                  choices = c("Choose Difficulty", "Run Mighty PERCH Model"),
                   selected = "See what does PERCH look like"),
       
-      selectInput("EP", 
-                  label = "Choose Etiology Prior",
-                  choices = c("Weak Uniform Prior", "Weak informed Prior"),
-                  selected = "Weak Uniform Prior"),
-      
-      selectInput("TBP", 
-                  label = "Choose Sensitivity Prior for Bronze Standard",
-                  choices = c("50%-100%", "0%-100%"),
-                  selected = "50%-100%"),
+      checkboxInput("advanced", "Advanced Setting"),
 
-      selectInput("TSP", 
-                  label = "Choose Sensitivity Prior for Silver Standard",
-                  choices = c("10%-20%", "0%-20%"),
-                  selected = "10%-20%"),
+
+      conditionalPanel(
+        condition = "input.advanced == false",
+        selectInput("EP", 
+                    label = "Choose Etiology Prior",
+                    choices = c("Weak Uniform Prior", "Weak informed Prior"),
+                    selected = "Weak Uniform Prior"),
+        selectInput("TBP", 
+                    label = "Choose Sensitivity Prior for Bronze Standard",
+                    choices = c("50%-100%", "0%-100%"),
+                    selected = "50%-100%"),
+        selectInput("TSP", 
+                    label = "Choose Sensitivity Prior for Silver Standard",
+                    choices = c("10%-20%", "0%-20%"),
+                    selected = "10%-20%")
+        
+      ),
+      conditionalPanel(
+        condition = "input.advanced == true",
+        sliderInput("slider1", "Virus: ", min = 0, max = 100, value = 0),
+        uiOutput("slider2"),
+        sliderInput("TBP1", 
+                    label = "Choose Sensitivity Prior for Bronze Standard",
+                    min = 0, max = 100, value = c(50,100)),
+        sliderInput("TSP1", 
+                    label = "Choose Sensitivity Prior for Silver Standard",
+                    min = 0, max = 50, value = c(10,20))
+      ),
       
+
       submitButton("Submit")
       ),
     
