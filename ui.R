@@ -8,16 +8,16 @@
 library(shiny)
 
 shinyUI(fluidPage(
-  titlePanel("PERCH Quantitative Model"),
+  titlePanel("PERCH Quantitative Analysis"),
   
   sidebarLayout(
     sidebarPanel(
       helpText("Create you own pie"),
       
-      selectInput("start", 
-                  label = "What do you want to do",
-                  choices = c("Choose Difficulty", "Run Mighty PERCH Model"),
-                  selected = "See what does PERCH look like"),
+#      selectInput("start", 
+#                  label = "What do you want to do",
+#                  choices = c("Choose Difficulty", "Clean","Run Mighty PERCH Model"),
+#                  selected = "See what does PERCH look like"),
       
       checkboxInput("advanced", "Advanced Setting"),
 
@@ -35,24 +35,30 @@ shinyUI(fluidPage(
         selectInput("TSP", 
                     label = "Choose Sensitivity Prior for Silver Standard",
                     choices = c("10%-20%", "0%-20%"),
-                    selected = "10%-20%")
+                    selected = "10%-20%"),
+        selectInput("CI", 
+                    label = "Correlation in Measurement",
+                    choices = c("Conditional Independence", "Conditional Dependence"),
+                    selected = "Conditional Independence")
         
       ),
       conditionalPanel(
         condition = "input.advanced == true",
-        sliderInput("slider1", "Virus: ", min = 0, max = 100, value = 0),
+        sliderInput("slider1", "Choose Etiology Prior for Virus: ", min = 0, max = 100, value = 0),
         uiOutput("slider2"),
         sliderInput("TBP1", 
                     label = "Choose Sensitivity Prior for Bronze Standard",
                     min = 0, max = 100, value = c(50,100)),
         sliderInput("TSP1", 
                     label = "Choose Sensitivity Prior for Silver Standard",
-                    min = 0, max = 50, value = c(10,20))
-      ),
+                    min = 0, max = 50, value = c(10,20)),
+        sliderInput("CI1", 
+                    label = "Choose Number of Subclasses in Cases/Controls",
+                    min = 1, max = 5, value = 1 )),
       
-
-      submitButton("Submit")
-      ),
+      
+      actionButton("Go","Go")
+    ),
     
     mainPanel(
       textOutput("text1")

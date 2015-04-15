@@ -26,9 +26,7 @@ shinyServer(
     source("SIM_DATA.R")
     source("SIM_FUN.R")
     
-    #output$slider2 <- reactiveUI(function() {
-    #  sliderInput("slider2", "Bacteria: ", min = 0,  max = 100 - input$slider1, value = 0)  
-    #})
+    output$slider2 <- renderUI(sliderInput("slider2", "Choose Etiology Prior for Bacteria: ", min = 0,  max = 100 - input$slider1, value = 0))
     
     dataInput <- reactive({
       set_parameter <- list(pathogen_BrS = c("A","B","C","D","E","F","G","H","I","J"),
@@ -47,11 +45,11 @@ shinyServer(
       return(simdata)
     })
     
-    finalInput <- reactive({
+    finalInput <- eventReactive(input$Go,{
       message <- "not run"
       if (input$EP=="Weak Uniform Prior" & input$TBP =="50%-100%" & input$TSP=="10%-20%") {
-        SIM_FUN(c("TB0","TS0"),"E0",dataInput())
-        message <- "run"
+        #SIM_FUN(c("TB0","TS0"),"E0",dataInput())
+        message <- paste0("run",input$EP)
       }
       return(message)
       ####Add other options###
@@ -60,14 +58,13 @@ shinyServer(
     })
       
     #simdata<- SIM_DATA(set_parameter_S0C0D0)
-    
+
     output$text1 <- renderText({ 
-      if (input$start =="Choose Difficulty") {
-        "Do you know PERCH is a fish?"
-      }
-      else if (input$start =="Run Mighty PERCH Model") {  
-      paste("You have selected", finalInput())
-      }
+
+      finalInput()
+      #count <- input$Submit
+
+
     })
 
     

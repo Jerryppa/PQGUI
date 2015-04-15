@@ -1,0 +1,16 @@
+{
+    "contents" : "\n# This is the user-interface definition of a Shiny web application.\n# You can find out more about building applications with Shiny here:\n#\n# http://shiny.rstudio.com\n#\n\nlibrary(shiny)\n\nshinyUI(fluidPage(\n  titlePanel(\"PERCH Quantitative Analysis\"),\n  \n  sidebarLayout(\n    sidebarPanel(\n      helpText(\"Create you own pie\"),\n      \n#      selectInput(\"start\", \n#                  label = \"What do you want to do\",\n#                  choices = c(\"Choose Difficulty\", \"Clean\",\"Run Mighty PERCH Model\"),\n#                  selected = \"See what does PERCH look like\"),\n      \n      checkboxInput(\"advanced\", \"Advanced Setting\"),\n\n\n      conditionalPanel(\n        condition = \"input.advanced == false\",\n        selectInput(\"EP\", \n                    label = \"Choose Etiology Prior\",\n                    choices = c(\"Weak Uniform Prior\", \"Weak informed Prior\"),\n                    selected = \"Weak Uniform Prior\"),\n        selectInput(\"TBP\", \n                    label = \"Choose Sensitivity Prior for Bronze Standard\",\n                    choices = c(\"50%-100%\", \"0%-100%\"),\n                    selected = \"50%-100%\"),\n        selectInput(\"TSP\", \n                    label = \"Choose Sensitivity Prior for Silver Standard\",\n                    choices = c(\"10%-20%\", \"0%-20%\"),\n                    selected = \"10%-20%\"),\n        selectInput(\"CI\", \n                    label = \"Correlation in Measurement\",\n                    choices = c(\"Conditional Independence\", \"Conditional Dependence\"),\n                    selected = \"Conditional Independence\")\n        \n      ),\n      conditionalPanel(\n        condition = \"input.advanced == true\",\n        sliderInput(\"slider1\", \"Choose Etiology Prior for Virus: \", min = 0, max = 100, value = 0),\n        uiOutput(\"slider2\"),\n        sliderInput(\"TBP1\", \n                    label = \"Choose Sensitivity Prior for Bronze Standard\",\n                    min = 0, max = 100, value = c(50,100)),\n        sliderInput(\"TSP1\", \n                    label = \"Choose Sensitivity Prior for Silver Standard\",\n                    min = 0, max = 50, value = c(10,20)),\n        sliderInput(\"CI1\", \n                    label = \"Choose Number of Subclasses in Cases/Controls\",\n                    min = 1, max = 5, value = 1 )),\n      \n      \n      actionButton(\"Go\",\"Go\")\n    ),\n    \n    mainPanel(\n      textOutput(\"text1\")\n    )\n  )\n))",
+    "created" : 1428670367249.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3371504527",
+    "id" : "8E692342",
+    "lastKnownWriteTime" : 1429125697,
+    "path" : "C:/Users/WFu/Google Drive/PERCH/2_PQ_MODEL/PQM_Project/PQGUI/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
