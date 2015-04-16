@@ -9,18 +9,18 @@ library(shiny)
 
 shinyServer(
   function(input, output) {
-    library(lubridate)
-    library(sets)
-    library(R2WinBUGS)
-    library(gplots)
-    library(RColorBrewer)
-    library(binom)
-    library(coda)
+    #library(lubridate)
+    #library(sets)
+    #library(R2WinBUGS)
+    #library(gplots)
+    #library(RColorBrewer)
+    #library(binom)
+    #library(coda)
     #library(nplcm)
     
     # for plot group etiologies posteriors:
     #library(ks)
-    library(robCompositions)
+    #library(robCompositions)
     
     
     source("SIM_DATA.R")

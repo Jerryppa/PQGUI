@@ -26,6 +26,15 @@ shinyUI(fluidPage(
 
       conditionalPanel(
         condition = "input.advanced == false",
+        radioButtons("HIV", label = "Choose HIV Status",
+                            choices = list("HIV Positive" = 1, "HIV Negative" = 2,
+                                           "HIV Exposed" = 3, "All" =4 ),selected = 4),
+        checkboxGroupInput("AGE", label = "Choose AGE groups",
+                            choices = list("1-5m" = 1, "6-11m" = 2,
+                            "12-23m" = 3, "24-59m" =4 ),selected = c(1,2,3,4)),
+        checkboxGroupInput("CXR", label = "Choose CXR Diagnoses",
+                   choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
+                                  "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),selected = c(1,2,3,4,5)),
         selectInput("EP", 
                     label = "Choose Etiology Prior",
                     choices = c("Weak Uniform Prior", "Weak informed Prior"),
@@ -46,6 +55,16 @@ shinyUI(fluidPage(
       ),
       conditionalPanel(
         condition = "input.advanced == true",
+        radioButtons("HIV", label = "Choose HIV Status",
+                     choices = list("HIV Positive" = 1, "HIV Negative" = 2,
+                                    "HIV Exposed" = 3, "All" =4 ),selected = 4),
+        checkboxGroupInput("AGE", label = "Choose AGE groups",
+                           choices = list("1-5m" = 1, "6-11m" = 2,
+                                          "12-23m" = 3, "24-59m" =4 ),selected = c(1,2,3,4)),
+        checkboxGroupInput("CXR", label = "Choose CXR Diagnoses",
+                           choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
+                                          "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),selected = c(1,2,3,4,5)),
+        
         sliderInput("slider1", "Choose Etiology Prior for Virus: ", min = 0, max = 100, value = 0),
         uiOutput("slider2"),
         sliderInput("TBP1", 
