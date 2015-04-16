@@ -16,10 +16,10 @@ shinyServer(
     library(RColorBrewer)
     library(binom)
     library(coda)
-    library(nplcm)
+    #library(nplcm)
     
     # for plot group etiologies posteriors:
-    library(ks)
+    #library(ks)
     library(robCompositions)
     
     
