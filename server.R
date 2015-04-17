@@ -26,8 +26,128 @@ shinyServer(
     source("SIM_DATA.R")
     source("SIM_FUN.R")
     
-    output$slider2 <- renderUI(sliderInput("slider2", "Choose Etiology Prior for Bacteria: ", min = 0,  max = 100 - input$slider1, value = 0))
+    output$StratPanel1 <- renderUI({
+      if (1 %in% input$Strat) {
+        checkboxGroupInput("HIV", label = "Choose HIV groups",
+                           choices = list("HIV Positive" = 1, "HIV Negative but Exposed" = 2,
+                                          "HIV Negative and Unexposed" = 3),selected = c(1,2,3))
+      } 
+      })
+    output$StratPanel2 <- renderUI({
+      if (2 %in% input$Strat) {
+        checkboxGroupInput("AGE", label = "Choose AGE groups",
+                           choices = list("1-5m" = 1, "6-11m" = 2,
+                                          "12-23m" = 3, "24-59m" =4 ),selected = c(1,2,3,4))
+        
+      }
+    })
+    output$StratPanel3 <- renderUI({
+      if (3 %in% input$Strat) {
+        checkboxGroupInput("CXR", label = "Choose CXR Diagnoses",
+                           choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
+                                          "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),
+                           selected = c(1,2,3,4,5))
+        
+      }
+    })
+    output$StratPanel1A <- renderUI({
+      if (1 %in% input$StratA) {
+        checkboxGroupInput("HIVA", label = "Choose HIV groups",
+                           choices = list("HIV Positive" = 1, "HIV Negative but Exposed" = 2,
+                                          "HIV Negative and Unexposed" = 3),selected = c(1,2,3))
+      } 
+    })
+    output$StratPanel2A <- renderUI({
+      if (2 %in% input$StratA) {
+        checkboxGroupInput("AGEA", label = "Choose AGE groups",
+                           choices = list("1-5m" = 1, "6-11m" = 2,
+                                          "12-23m" = 3, "24-59m" =4 ),selected = c(1,2,3,4))
+        
+      }
+    })
+    output$StratPanel3A <- renderUI({
+      if (3 %in% input$StratA) {
+        checkboxGroupInput("CXRA", label = "Choose CXR Diagnoses",
+                           choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
+                                          "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),
+                           selected = c(1,2,3,4,5))
+        
+      }
+    })    
+    output$StratPanel1B <- renderUI({
+      if (1 %in% input$StratB) {
+        checkboxGroupInput("HIVB", label = "Choose HIV groups",
+                           choices = list("HIV Positive" = 1, "HIV Negative but Exposed" = 2,
+                                          "HIV Negative and Unexposed" = 3),selected = c(1,2,3))
+      } 
+    })
+    output$StratPanel2B <- renderUI({
+      if (2 %in% input$StratB) {
+        checkboxGroupInput("AGEB", label = "Choose AGE groups",
+                           choices = list("1-5m" = 1, "6-11m" = 2,
+                                          "12-23m" = 3, "24-59m" =4 ),selected = c(1,2,3,4))
+        
+      }
+    })
+    output$StratPanel3B <- renderUI({
+      if (3 %in% input$StratB) {
+        checkboxGroupInput("CXRB", label = "Choose CXR Diagnoses",
+                           choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
+                                          "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),
+                           selected = c(1,2,3,4,5))
+        
+      }
+    })
+    output$StratPanel1A_p <- renderUI({
+      if (1 %in% input$StratA_p) {
+        checkboxGroupInput("HIVA_p", label = "Choose HIV groups",
+                           choices = list("HIV Positive" = 1, "HIV Negative but Exposed" = 2,
+                                          "HIV Negative and Unexposed" = 3),selected = c(1,2,3))
+      } 
+    })
+    output$StratPanel2A_p <- renderUI({
+      if (2 %in% input$StratA_p) {
+        checkboxGroupInput("AGEA_p", label = "Choose AGE groups",
+                           choices = list("1-5m" = 1, "6-11m" = 2,
+                                          "12-23m" = 3, "24-59m" =4 ),selected = c(1,2,3,4))
+        
+      }
+    })
+    output$StratPanel3A_p <- renderUI({
+      if (3 %in% input$StratA_p) {
+        checkboxGroupInput("CXRA_p", label = "Choose CXR Diagnoses",
+                           choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
+                                          "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),
+                           selected = c(1,2,3,4,5))
+        
+      }
+    })
+    output$StratPanel1B_p <- renderUI({
+      if (1 %in% input$StratB_p) {
+        checkboxGroupInput("HIVB_p", label = "Choose HIV groups",
+                           choices = list("HIV Positive" = 1, "HIV Negative but Exposed" = 2,
+                                          "HIV Negative and Unexposed" = 3),selected = c(1,2,3))
+      } 
+    })
+    output$StratPanel2B_p <- renderUI({
+      if (2 %in% input$StratB_p) {
+        checkboxGroupInput("AGEB_p", label = "Choose AGE groups",
+                           choices = list("1-5m" = 1, "6-11m" = 2,
+                                          "12-23m" = 3, "24-59m" =4 ),selected = c(1,2,3,4))
+        
+      }
+    })
+    output$StratPanel3B_p <- renderUI({
+      if (3 %in% input$StratB_p) {
+        checkboxGroupInput("CXRB_p", label = "Choose CXR Diagnoses",
+                           choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
+                                          "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),
+                           selected = c(1,2,3,4,5))
+        
+      }
+    })
     
+    output$slider2 <- renderUI(sliderInput("slider2", "Choose Etiology Prior for Bacteria: ", min = 0,  max = 100 - input$slider1, value = 0))
     dataInput <- reactive({
       set_parameter <- list(pathogen_BrS = c("A","B","C","D","E","F","G","H","I","J"),
                                  cause_list=c("A","B","C","D","E","F","G","H","I","J"),
@@ -51,7 +171,7 @@ shinyServer(
         #SIM_FUN(c("TB0","TS0"),"E0",dataInput())
         message <- paste0("run",input$EP)
       }
-      return(message)
+      return(input$Strat)
       ####Add other options###
     
         
