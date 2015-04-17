@@ -28,7 +28,7 @@ shinyServer(
     
     output$StratPanel1 <- renderUI({
       if (1 %in% input$Strat) {
-        checkboxGroupInput("HIV", label = "Choose HIV groups",
+        checkboxGroupInput("HIV", label = "Choose HIV status",
                            choices = list("HIV Positive" = 1, "HIV Negative but Exposed" = 2,
                                           "HIV Negative and Unexposed" = 3),selected = c(1,2,3))
       } 
@@ -43,7 +43,7 @@ shinyServer(
     })
     output$StratPanel3 <- renderUI({
       if (3 %in% input$Strat) {
-        checkboxGroupInput("CXR", label = "Choose CXR Diagnoses",
+        checkboxGroupInput("CXR", label = "Choose CXR Conclusions",
                            choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
                                           "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),
                            selected = c(1,2,3,4,5))
@@ -52,7 +52,7 @@ shinyServer(
     })
     output$StratPanel1A <- renderUI({
       if (1 %in% input$StratA) {
-        checkboxGroupInput("HIVA", label = "Choose HIV groups",
+        checkboxGroupInput("HIVA", label = "Choose HIV status",
                            choices = list("HIV Positive" = 1, "HIV Negative but Exposed" = 2,
                                           "HIV Negative and Unexposed" = 3),selected = c(1,2,3))
       } 
@@ -67,7 +67,7 @@ shinyServer(
     })
     output$StratPanel3A <- renderUI({
       if (3 %in% input$StratA) {
-        checkboxGroupInput("CXRA", label = "Choose CXR Diagnoses",
+        checkboxGroupInput("CXRA", label = "Choose CXR Conclusions",
                            choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
                                           "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),
                            selected = c(1,2,3,4,5))
@@ -76,7 +76,7 @@ shinyServer(
     })    
     output$StratPanel1B <- renderUI({
       if (1 %in% input$StratB) {
-        checkboxGroupInput("HIVB", label = "Choose HIV groups",
+        checkboxGroupInput("HIVB", label = "Choose HIV status",
                            choices = list("HIV Positive" = 1, "HIV Negative but Exposed" = 2,
                                           "HIV Negative and Unexposed" = 3),selected = c(1,2,3))
       } 
@@ -91,7 +91,7 @@ shinyServer(
     })
     output$StratPanel3B <- renderUI({
       if (3 %in% input$StratB) {
-        checkboxGroupInput("CXRB", label = "Choose CXR Diagnoses",
+        checkboxGroupInput("CXRB", label = "Choose CXR Conclusions",
                            choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
                                           "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),
                            selected = c(1,2,3,4,5))
@@ -100,7 +100,7 @@ shinyServer(
     })
     output$StratPanel1A_p <- renderUI({
       if (1 %in% input$StratA_p) {
-        checkboxGroupInput("HIVA_p", label = "Choose HIV groups",
+        checkboxGroupInput("HIVA_p", label = "Choose HIV status",
                            choices = list("HIV Positive" = 1, "HIV Negative but Exposed" = 2,
                                           "HIV Negative and Unexposed" = 3),selected = c(1,2,3))
       } 
@@ -115,7 +115,7 @@ shinyServer(
     })
     output$StratPanel3A_p <- renderUI({
       if (3 %in% input$StratA_p) {
-        checkboxGroupInput("CXRA_p", label = "Choose CXR Diagnoses",
+        checkboxGroupInput("CXRA_p", label = "Choose CXR Conclusions",
                            choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
                                           "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),
                            selected = c(1,2,3,4,5))
@@ -124,7 +124,7 @@ shinyServer(
     })
     output$StratPanel1B_p <- renderUI({
       if (1 %in% input$StratB_p) {
-        checkboxGroupInput("HIVB_p", label = "Choose HIV groups",
+        checkboxGroupInput("HIVB_p", label = "Choose HIV status",
                            choices = list("HIV Positive" = 1, "HIV Negative but Exposed" = 2,
                                           "HIV Negative and Unexposed" = 3),selected = c(1,2,3))
       } 
@@ -139,7 +139,7 @@ shinyServer(
     })
     output$StratPanel3B_p <- renderUI({
       if (3 %in% input$StratB_p) {
-        checkboxGroupInput("CXRB_p", label = "Choose CXR Diagnoses",
+        checkboxGroupInput("CXRB_p", label = "Choose CXR Conclusions",
                            choices = list("Primary End Point" = 1, "Other infiltrate" = 2,
                                           "Primary End Point or Other infiltrate" = 3, "Normal" =4, "Uninterpretable"=5 ),
                            selected = c(1,2,3,4,5))
