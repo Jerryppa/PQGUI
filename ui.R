@@ -15,7 +15,7 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
       helpText("Create you own pie"),
-      
+      downloadButton('instruction',label = "Instructions"),
 #      selectInput("start", 
 #                  label = "What do you want to do",
 #                  choices = c("Choose Difficulty", "Clean","Run Mighty PERCH Model"),
@@ -46,20 +46,20 @@ shinyUI(fluidPage(
           condition = "input.Advanced == 1 ",
         selectInput("EP", 
                     label = "Choose Etiology Prior",
-                    choices = c("Weak Uniform Prior", "Weak informed Prior"),
-                    selected = "Weak Uniform Prior"),
+                    choices = list("Weak Uniform Prior"=1, "Weak informed Prior"=2),
+                    selected = 1),
         selectInput("TBP", 
                     label = "Choose Sensitivity Prior for Bronze Standard",
-                    choices = c("50%-100%", "0%-100%"),
-                    selected = "50%-100%"),
+                    choices = list("50%-100%"=1, "0%-100%"=2),
+                    selected = 1),
         selectInput("TSP", 
                     label = "Choose Sensitivity Prior for Silver Standard",
-                    choices = c("Pathogen specific sensitivity", "10%-20% for all silver standard"),
-                    selected = "Pathogen specific sensitivity"),
+                    choices = list("Pathogen specific sensitivity"=1, "10%-20% for all silver standard"=2),
+                    selected = 1),
         selectInput("CI", 
                     label = "Correlation in Measurement",
-                    choices = c("Conditional Independence", "Conditional Dependence"),
-                    selected = "Conditional Independence")
+                    choices = list("Conditional Independent"=1, "Conditional Dependent"=2),
+                    selected = 1)
         )
         
       ),
@@ -86,20 +86,20 @@ shinyUI(fluidPage(
           condition = "input.AdvancedA == 1 ",
         selectInput("EPA", 
                     label = "Choose Etiology Prior",
-                    choices = c("Weak Uniform Prior", "Weak informed Prior"),
-                    selected = "Weak Uniform Prior"),
+                    choices = list("Weak Uniform Prior"=1, "Weak informed Prior"=2),
+                    selected = 1),
         selectInput("TBPA", 
                     label = "Choose Sensitivity Prior for Bronze Standard",
-                    choices = c("50%-100%", "0%-100%"),
-                    selected = "50%-100%"),
+                    choices = list("50%-100%"=1, "0%-100%"=2),
+                    selected = 1),
         selectInput("TSPA", 
                     label = "Choose Sensitivity Prior for Silver Standard",
-                    choices = c("Pathogen specific sensitivity", "10%-20% for all silver standard"),
-                    selected = "Pathogen specific sensitivity"),
+                    choices = list("Pathogen specific sensitivity"=1, "10%-20% for all silver standard"=2),
+                    selected = 1),
         selectInput("CIA", 
                     label = "Correlation in Measurement",
-                    choices = c("Conditional Independence", "Conditional Dependence"),
-                    selected = "Conditional Independence")
+                    choices = list("Conditional Independent"=1, "Conditional Dependent"=2),
+                    selected = 1)
         ),
         
         helpText("Model B"),
@@ -121,20 +121,20 @@ shinyUI(fluidPage(
           condition = "input.AdvancedB == 1 ",
         selectInput("EPB", 
                     label = "Choose Etiology Prior",
-                    choices = c("Weak Uniform Prior", "Weak informed Prior"),
-                    selected = "Weak Uniform Prior"),
+                    choices = list("Weak Uniform Prior"=1, "Weak informed Prior"=2),
+                    selected = 1),
         selectInput("TBPB", 
                     label = "Choose Sensitivity Prior for Bronze Standard",
-                    choices = c("50%-100%", "0%-100%"),
-                    selected = "50%-100%"),
+                    choices = list("50%-100%"=1, "0%-100%"=2),
+                    selected = 1),
         selectInput("TSPB", 
                     label = "Choose Sensitivity Prior for Silver Standard",
-                    choices = c("Pathogen specific sensitivity", "10%-20% for all silver standard"),
-                    selected = "Pathogen specific sensitivity"),
+                    choices = list("Pathogen specific sensitivity"=1, "10%-20% for all silver standard"=2),
+                    selected = 1),
         selectInput("CIB", 
                     label = "Correlation in Measurement",
-                    choices = c("Conditional Independence", "Conditional Dependence"),
-                    selected = "Conditional Independence")
+                    choices = list("Conditional Independent"=1, "Conditional Dependent"=2),
+                    selected = 1)
         ),       
         helpText("Music Plot Advanced Setting "),
         
@@ -164,11 +164,14 @@ shinyUI(fluidPage(
     ),
       
       
-      actionButton("Go","Go")
+        actionButton("Check","Check"),
+        actionButton("Go","Go")
+
     ),
     
     mainPanel(
-      textOutput("text1")
+      htmlOutput("text1"),
+      htmlOutput("text2")
     )
   )
 ))

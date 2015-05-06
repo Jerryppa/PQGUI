@@ -1,0 +1,48 @@
+---
+title: "Graphical User Interface for PQ Quantitative Analysis"
+author: "PERCH Working Group"
+date: "Tuesday, May 05, 2015"
+output: pdf_document
+---
+
+## Module 1 - Single Model 
+
+A single model will be run restricting to the analytic population specified by the stratification variable(s).  
+
+* Step 1: To select a specific subset to run the PQ analysis on, select the corresponding stratification variable (e.g., ‘CXR conclusion’) 
+* Step 2: To select the specific strata of interest (e.g., for CXR positive, select ‘Primary Endpoint’, ‘Other Infiltrate’, ‘Primary Endpoint or Other Infiltrate’)
+* Step 3: To select a subset stratifying by multiple variables, select the stratification variables (e.g., ‘CXR Conclusion’ and ‘Age’) then select the strata of interest (e.g., CXR positive and Age < 1).  
+
+
+***Note: The data may not be robust enough in certain subsets to appropriately estimate etiology.  Evaluate the availability of data in the specified subset and consult with the Core team as needed.***
+
+## Module 2 - Multiple Model
+
+Multiple models will be run restricting to the analytic population specified by the stratification variable(s) and a music plot will be produced comparing the etiologic fractions between the models.
+
+* Step 1: For each model, to select a specific subset to run the PQ analysis on, select the corresponding stratification variable (e.g., ‘CXR conclusion’) 
+* Step 2: To select the specific strata of interest (e.g., for CXR positive, select ‘Primary Endpoint’, ‘Other Infiltrate’, ‘Primary Endpoint or Other Infiltrate’)
+* Step 3: To select a subset stratifying by multiple variables, select the stratification variables (e.g., ‘CXR Conclusion’ and ‘Age’) then select the strata of interest (e.g., CXR positive and Age < 1).  
+
+***Note: Post-hoc stratification may only be appropriate in certain scenarios.  The data may not be robust enough in certain subsets to appropriately estimate etiology.  Evaluate the availability of data in the specified subset and consult with the Core team as needed.*** 
+
+### Music Plot Advanced Setting
+
+For post-hoc stratification of the individual etiologic probabilities from a single model, specify the model conditions under both Model A and Model B (e.g., CXR positive and HIV positive).  Under the “Music Plot Advanced Setting” section, select the additional stratifying variable of interest and specific strata for each model to be used in the Music Plot (e.g., Model A: Age < 1, Model B: Age > 1).  
+
+## Running Model
+
+Click Go Button to submit your specification. Software will search for results folder first and start running PQ Quantatitive Analysis if no corresponding results folder could be found. 
+
+Before submitting the model specification, we ***strongly recommend*** you to click Check button and make sure you specified correct model.
+
+## PQGUI is a working project!
+
+Several features are not ready in the currrent version:
+1. Antibiotic Pre-treatment
+2. Regression/Adjustment Component
+3. Conditional Dependence Model
+4. Model Advanced Setting
+5. Multiple Model Module
+6. Visualization (Three-panel Plot and Music Plot)
+ 
