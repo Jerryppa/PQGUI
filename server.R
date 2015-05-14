@@ -583,7 +583,7 @@ shinyServer(
       finaloutputB<- Function_GO(Strata,HIV,AGE,CXR,CXR2,EP,TBP,TSP,CI,Adj,Advanced)
       message_lastB <- finaloutputB[[1]]
       Res.dirB <- finaloutputB[[2]]
-      DIR_list <- list(Res.dirA, Res.dirB)
+      DIR_list <- list(paste0("C:/PQGUI/",Res.dirA), paste0("C:/PQGUI/",Res.dirB))
 
       nplcm_plot_etiology_music_sheet(DIR_list=DIR_list,
                 DIR_pathogen_displayorder_lookup="data/pathogen_displayorder_lookup.csv",
