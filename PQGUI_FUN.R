@@ -41,7 +41,7 @@ library(ggplot2)
 
 
 
-PQGUI_FUN <- function(current_study_site=5,out_list,EP,TBP,TSP,CI,Res.dir){
+PQGUI_FUN <- function(current_study_site=5,CXR_choice,out_list,EP,TBP,TSP,CI,Res.dir,...){
   
   
   newALLSITES             <- c("01KEN","02GAM","03MAL","04ZAM",
@@ -71,11 +71,25 @@ PQGUI_FUN <- function(current_study_site=5,out_list,EP,TBP,TSP,CI,Res.dir){
   
   ##### Create stratification variables ####
   
-  PQGUI_dataset<- read.csv("data/PQ_06MAY15.csv")
-  PQGUI_dataset$PQGUI_CXR = as.numeric(PQGUI_dataset$X_CXRFIN_5 %in% out_list[[3]])
+  PQGUI_dataset<- read.csv("data/PQ_SAF_14MAY15.csv")
   PQGUI_dataset$PQGUI_HIV = as.numeric(PQGUI_dataset$X_HIV_3 %in% (3-out_list[[1]]))
   PQGUI_dataset$PQGUI_AGE = as.numeric(PQGUI_dataset$X_AGECAT %in% out_list[[2]])
-  write.csv(PQGUI_dataset,"data/PQ_06MAY15_PQGUI.csv")
+
+  if (CXR_choice == 1) {
+      PQGUI_dataset$PQGUI_CXR = as.numeric(PQGUI_dataset$X_CXRFIN_5 %in% out_list[[3]])
+  } else if (CXR_choice == 2) {
+    PQGUICXR_data <- PQGUI_dataset[,c("airspace","interstitial","cld","lymphadenop",
+            "pleural","airtrap","cardiomeg","WHOENDPOINT","OTHERINFILONLY")][,out_list[[3]]]
+    if (length(out_list[[3]]) == 1 ){
+      PQGUI_dataset$PQGUI_CXR = PQGUICXR_data
+    } else {
+      PQGUI_dataset$PQGUI_CXR = apply(PQGUICXR_data,1,max)
+    }
+  }
+
+
+
+  write.csv(PQGUI_dataset,"data/PQ_SAF_14MAY15_GUI.csv")
   
   ## clean PERCH data:
   clean_options <- list (case_def           =  "PQGUI_CXR",
@@ -90,13 +104,13 @@ PQGUI_FUN <- function(current_study_site=5,out_list,EP,TBP,TSP,CI,Res.dir){
                          X_extra            = c("newSITE","ENRLDATE","patid","AGECAT","HIV"),
                          # coverates for separately ordering cases/controls:
                          X_order_obs        = c("newSITE","ENRLDATE","AGECAT","HIV"),
-                         RawMeasDir         = paste0("data/PQ_06MAY15_PQGUI.csv"),
+                         RawMeasDir         = paste0("data/PQ_SAF_14MAY15_GUI.csv"),
                          write_newSite      = TRUE,
                          newSite_write_Dir  = paste0("data/PERCH_data_with_newSITE.csv"),
                          MeasDir            = paste0("data/PERCH_data_with_newSITE.csv"),
                          PathCatDir         = paste0("data/pathogen_category.csv"),
                          allow_missing      = T)
-  
+
   
   
   ## get cleaned data:

@@ -1,0 +1,14 @@
+---
+title: "Developer Notes"
+author: "Wei Fu"
+date: "Wednesday, May 13, 2015"
+output: html_document
+---
+
+2015.05.13
+
+Road to South Africa PQGUI
+1. Rename CXR checkbox
+2. Create Music plot component for single model
+3. Create Music plot component for multiple models
+

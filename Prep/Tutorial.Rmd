@@ -1,0 +1,56 @@
+---
+title: "PQ GUI Tutorial"
+author: "Wei Fu"
+date: "Wednesday, May 06, 2015"
+output: slidy_presentation
+---
+
+## Purpose
+
+- It's designed to assist people in running model
+    - User-friendly interface
+    - Structured layout
+    - Check/Warining system to ensure correct specification
+- It's not designed for experiments on PERCH Quantitative Analysis.
+    - less control over model setting (options for priors are )
+
+## Reciept for PERCH pie
+
+- REALLY REALLY understand PERCH
+- Understand PERCH Quantitative Analysis
+- Install softwares
+- Install additional packages
+- Download and run PQGUI app
+
+## Install softwares
+
+- WINBUGS
+    - Please make sure it's installed in ***C:/Program Files/WinBUGS14/***
+    - We are very close to successfully implement code in "Supercomputer" using *JAGS*
+
+- R & R Studio
+
+## Install additional packages
+```{r, eval=FALSE}
+install.packages("lubridate")
+install.packages("devtools")
+install.packages("sets")
+install.packages("R2WinBUGS")
+install.packages("gplots")
+install.packages("RColorBrewer")
+install.packages("binom")
+install.packages("coda")
+install.packages("ks")
+install.packages("robCompositions")
+install.packages(c("Rcpp", "httpuv", "shiny"))
+devtools::install_github("zhenkewu/nplcm")
+```
+## Download and run PQGUI app
+
+```{r, eval=FALSE}
+shiny::runGitHub("PQGUI","fupangpangpang")
+```
+
+
+
+

@@ -1,0 +1,7 @@
+CXR 3 - and 
+0.6 vs. 0.8 ??  
+Change stratification to Subsetting 
+adjustment CXR??
+Set.seed?? Zhenke
+Random component? in MCMC 
+individual matrix

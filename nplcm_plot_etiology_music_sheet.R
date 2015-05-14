@@ -20,7 +20,8 @@
 #'
 
 nplcm_plot_etiology_music_sheet <- function(DIR_list,
-                                            DIR_pathogen_displayorder_lookup){
+                                            DIR_pathogen_displayorder_lookup,
+                                            comparision=F){
           ## read in pathogen display order lookup table:
           pathogen_displayorder_lookup <- read.csv(DIR_pathogen_displayorder_lookup)
           f <- pathogen_displayorder_lookup$Pathogen
@@ -263,7 +264,11 @@ nplcm_plot_etiology_music_sheet <- function(DIR_list,
                      y = ymax*3/4, size = 10, colour = "black")+
                     annotate("text", label = "other", x = (viral_line_pos+bacterial_line_pos+other_line_pos/2),
                             y = ymax*3/4, size = 10, colour = "black")
-       res
+      if (comparision ==F ){
+            ggsave(file=paste0(DIR_list,"/Music_Plot.pdf"),width=20, height=10)
+      } else {
+            ggsave(file=paste0("C:/PQGUI/Music_Plot_comparison.pdf"),width=20, height=10)
+      }
 
       ## plain R plots:----------------------------------
       #    ## combine them into the display:
