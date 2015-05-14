@@ -78,8 +78,10 @@ PQGUI_FUN <- function(current_study_site=5,CXR_choice,out_list,EP,TBP,TSP,CI,Res
   if (CXR_choice == 1) {
       PQGUI_dataset$PQGUI_CXR = as.numeric(PQGUI_dataset$X_CXRFIN_5 %in% out_list[[3]])
   } else if (CXR_choice == 2) {
-    PQGUICXR_data <- PQGUI_dataset[,c("airspace","interstitial","cld","lymphadenop",
-            "pleural","airtrap","cardiomeg","WHOENDPOINT","OTHERINFILONLY")][,out_list[[3]]]
+    PQGUICXR_data <- PQGUI_dataset[,c("airspace","interstitial","cld",
+"lymphadenop","pleural","airtrap","cardiomeg","WHOENDPOINT",
+"OTHERINFILONLY","WHOENDPOINTONLY","BOTH","normal","MISSING"
+)][,out_list[[3]]]
     if (length(out_list[[3]]) == 1 ){
       PQGUI_dataset$PQGUI_CXR = PQGUICXR_data
     } else {
@@ -159,7 +161,7 @@ PQGUI_FUN <- function(current_study_site=5,CXR_choice,out_list,EP,TBP,TSP,CI,Res
   result.folder    <- paste0("C:/PQGUI/",Res.dir)
   dir.create(result.folder,recursive = T)
   #
-  
+  write.csv(PQGUI_dataset,paste0(result.folder,"/PQ_SAF_14MAY15_GUI.csv"))
   
   # options for MCMC chains:
   mcmc_options <- list(debugstatus = !TRUE,

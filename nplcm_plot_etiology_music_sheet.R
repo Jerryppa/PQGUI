@@ -30,6 +30,7 @@ nplcm_plot_etiology_music_sheet <- function(DIR_list,
           ## read in data from result directories:
                 bugs.dat_list <- list()
            model_options_list <- list()
+          mcmc_options_list <- list()
                 pathogen_list <- list()
                 pick_list     <- list()
                 Jfull_BrS     <- list()
@@ -54,7 +55,8 @@ nplcm_plot_etiology_music_sheet <- function(DIR_list,
                 bugs.dat_list[[i]] <- bugs.dat
                 rm("bugs.dat")
                 model_options_list[[i]]  <- dget(paste(DIR_list[[i]],"model_options.txt",sep="/"))
-#WF
+                mcmc_options_list[[i]]  <- dget(paste(DIR_list[[i]],"mcmc_options.txt",sep="/"))
+                result.folder <- mcmc_options_list[[i]][["result.folder"]]#WF
                 pathogen_list[[i]]     <- model_options_list[[i]]$cause_list
                 Jfull[[i]]        <- length(pathogen_list[[i]])
 
@@ -73,6 +75,11 @@ nplcm_plot_etiology_music_sheet <- function(DIR_list,
                     SubVarName[j] = paste("pEti","[",j,"]",sep="")
                     
                   }
+                  IcatName <- rep(NA,Nd_list[[i]])
+                  for (j in 1:Nd_list[[i]]){
+                    IcatName[j] = paste("Icat","[",j,"]",sep="")
+                  }
+                  Icat_raw = res_nplcm[,IcatName]
                   pEti_raw = res_nplcm[,SubVarName]
                 } else {
                   
@@ -85,6 +92,7 @@ nplcm_plot_etiology_music_sheet <- function(DIR_list,
                   for (j in 1:Jfull[[i]]){
                     VarName[j] = paste("pEti","[",j,"]",sep="")
                   }
+
                   
                   pEti_raw=matrix(0,dim(res_nplcm)[1],Jfull[[i]])
                   colnames(pEti_raw)=VarName
@@ -100,7 +108,17 @@ nplcm_plot_etiology_music_sheet <- function(DIR_list,
 
 
 
-               
+                Icat_mat <- IcatToIEti(Icat_raw)
+                colnames(Icat_mat) <- pathogen_list[[i]][as.numeric(colnames(Icat_mat))]
+                rownames(Icat_mat) <- 1:nrow(Icat_mat)
+                PQ_GUI_dataset <- read.csv(paste0(DIR_list[[i]],"/PQ_SAF_14MAY15_GUI.csv"))
+                #PQ_GUI_dataset <- read.csv("data/PQ_SAF_14MAY15_GUI.csv")
+                PQ_GUI_subset <- PQ_GUI_dataset[which(PQ_GUI_dataset$PQGUI_CXR==1 & 
+                                                         PQ_GUI_dataset$PQGUI_HIV==1 &  
+                                                         PQ_GUI_dataset$PQGUI_AGE==1),-1]
+                row.names(PQ_GUI_subset)<- 1:nrow(PQ_GUI_subset)
+                PQ_GUI_ind_prop<- merge(PQ_GUI_subset,as.data.frame(Icat_mat),by="row.names")
+                write.csv(PQ_GUI_ind_prop,paste0(DIR_list[[i]],"/PQ_GUI.csv"))
 
                 #get etiology fraction MCMC samples:
                 pEti_mat[[i]]   <- pEti_raw

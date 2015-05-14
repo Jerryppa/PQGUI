@@ -32,6 +32,7 @@ shinyServer(
     source("nplcm_fit_NoReg_BrSandSS_NoNest_SSonly.R")
     source("nplcm.R")
     source("nplcm_plot_etiology_music_sheet.R")
+    source("IcatToIEti.R")
     output$instruction = downloadHandler(
       filename = 'Instruction.pdf',
       
@@ -74,12 +75,13 @@ shinyServer(
                                           "pleural"=5,
                                           "airtrap"=6,
                                           "cardiomeg"=7,
-                                          "WHO ENDPOINT Only"=8,
-                                          "OTHER INFIL ONLY"=9,
-                                          "ENDPOINT AND OTHER INFIL"=10,
-                                          "NORMAL"=11,
-                                          "NONE OF ABOVE"=12),
-                           selected = c(1,2,3,4,5,6,7,8,9,10,11,12))
+                                          "WHO ENDPOINT"=8,
+                                          "WHO ENDPOINT Only"=9,
+                                          "OTHER INFIL ONLY"=10,
+                                          "ENDPOINT AND OTHER INFIL"=11,
+                                          "NORMAL"=12,
+                                          "MISSING"=13),
+                           selected = c(1,2,3,4,5,6,7,8,9,10,11,12,13))
         
       }
     })
@@ -121,12 +123,13 @@ shinyServer(
                                           "pleural"=5,
                                           "airtrap"=6,
                                           "cardiomeg"=7,
-                                          "WHO ENDPOINT Only"=8,
-                                          "OTHER INFIL ONLY"=9,
-                                          "ENDPOINT AND OTHER INFIL"=10,
-                                          "NORMAL"=11,
-                                          "NONE OF ABOVE"=12),
-                           selected = c(1,2,3,4,5,6,7,8,9,10,11,12))
+                                          "WHO ENDPOINT"=8,
+                                          "WHO ENDPOINT Only"=9,
+                                          "OTHER INFIL ONLY"=10,
+                                          "ENDPOINT AND OTHER INFIL"=11,
+                                          "NORMAL"=12,
+                                          "MISSING"=13),
+                           selected = c(1,2,3,4,5,6,7,8,9,10,11,12,13))
         
       }
     })
@@ -169,12 +172,13 @@ shinyServer(
                                           "pleural"=5,
                                           "airtrap"=6,
                                           "cardiomeg"=7,
-                                          "WHO ENDPOINT Only"=8,
-                                          "OTHER INFIL ONLY"=9,
-                                          "ENDPOINT AND OTHER INFIL"=10,
-                                          "NORMAL"=11,
-                                          "NONE OF ABOVE"=12),
-                           selected = c(1,2,3,4,5,6,7,8,9,10,11,12))
+                                          "WHO ENDPOINT"=8,
+                                          "WHO ENDPOINT Only"=9,
+                                          "OTHER INFIL ONLY"=10,
+                                          "ENDPOINT AND OTHER INFIL"=11,
+                                          "NORMAL"=12,
+                                          "MISSING"=13),
+                           selected = c(1,2,3,4,5,6,7,8,9,10,11,12,13))
         
       }
     })
@@ -216,12 +220,13 @@ shinyServer(
                                           "pleural"=5,
                                           "airtrap"=6,
                                           "cardiomeg"=7,
-                                          "WHO ENDPOINT Only"=8,
-                                          "OTHER INFIL ONLY"=9,
-                                          "ENDPOINT AND OTHER INFIL"=10,
-                                          "NORMAL"=11,
-                                          "NONE OF ABOVE"=12),
-                           selected = c(1,2,3,4,5,6,7,8,9,10,11,12))
+                                          "WHO ENDPOINT"=8,
+                                          "WHO ENDPOINT Only"=9,
+                                          "OTHER INFIL ONLY"=10,
+                                          "ENDPOINT AND OTHER INFIL"=11,
+                                          "NORMAL"=12,
+                                          "MISSING"=13),
+                           selected = c(1,2,3,4,5,6,7,8,9,10,11,12,13))
         
       }
     })
@@ -263,12 +268,13 @@ shinyServer(
                                           "pleural"=5,
                                           "airtrap"=6,
                                           "cardiomeg"=7,
-                                          "WHO ENDPOINT Only"=8,
-                                          "OTHER INFIL ONLY"=9,
-                                          "ENDPOINT AND OTHER INFIL"=10,
-                                          "NORMAL"=11,
-                                          "NONE OF ABOVE"=12),
-                           selected = c(1,2,3,4,5,6,7,8,9,10,11,12))
+                                          "WHO ENDPOINT"=8,
+                                          "WHO ENDPOINT Only"=9,
+                                          "OTHER INFIL ONLY"=10,
+                                          "ENDPOINT AND OTHER INFIL"=11,
+                                          "NORMAL"=12,
+                                          "MISSING"=13),
+                           selected = c(1,2,3,4,5,6,7,8,9,10,11,12,13))
         
       }
     })
@@ -333,11 +339,12 @@ shinyServer(
                   "pleural",
                   "airtrap",
                   "cardiomeg",
+                  "WHO ENDPOINT",
                   "WHO ENDPOINT Only",
                   "OTHER INFIL ONLY",
                   "ENDPOINT AND OTHER INFIL",
                   "NORMAL",
-                  "NONE OF ABOVE")
+                  "MISSING")
     finalInput <- eventReactive(input$Check,{
       ##### return PQ specification ######
 
