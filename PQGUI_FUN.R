@@ -166,8 +166,8 @@ PQGUI_FUN <- function(current_study_site=5,CXR_choice,out_list,EP,TBP,TSP,CI,Res
   # options for MCMC chains:
   mcmc_options <- list(debugstatus = !TRUE,
                        n.chains   = 1,
-                       n.itermcmc = 1000,
-                       n.burnin   = 500,
+                       n.itermcmc = 10000,
+                       n.burnin   = 5000,
                        n.thin     = 5,
                        individual.pred = TRUE,
                        ppd             = TRUE,
