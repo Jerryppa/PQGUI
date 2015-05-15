@@ -110,6 +110,7 @@ nplcm_plot_etiology_music_sheet <- function(DIR_list,
 
                 Icat_mat <- IcatToIEti(Icat_raw)
                 colnames(Icat_mat) <- pathogen_list[[i]][as.numeric(colnames(Icat_mat))]
+                Icat_mat[is.na(Icat_mat)]<-0
                 rownames(Icat_mat) <- 1:nrow(Icat_mat)
                 PQ_GUI_dataset <- read.csv(paste0(DIR_list[[i]],"/PQ_SAF_14MAY15_GUI.csv"))
                 #PQ_GUI_dataset <- read.csv("data/PQ_SAF_14MAY15_GUI.csv")

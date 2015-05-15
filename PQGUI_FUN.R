@@ -80,7 +80,7 @@ PQGUI_FUN <- function(current_study_site=5,CXR_choice,out_list,EP,TBP,TSP,CI,Res
   } else if (CXR_choice == 2) {
     PQGUICXR_data <- PQGUI_dataset[,c("airspace","interstitial","cld",
 "lymphadenop","pleural","airtrap","cardiomeg","WHOENDPOINT",
-"OTHERINFILONLY","WHOENDPOINTONLY","BOTH","normal","MISSING"
+"WHOENDPOINTONLY","OTHERINFILONLY","BOTH","normal","MISSING"
 )][,out_list[[3]]]
     if (length(out_list[[3]]) == 1 ){
       PQGUI_dataset$PQGUI_CXR = PQGUICXR_data
